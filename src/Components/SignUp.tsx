@@ -1,16 +1,17 @@
-import {getAuth, signInWithEmailAndPassword} from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import {useDispatch} from "react-redux";
 import {Form} from "./Form";
 import {setUser} from "../store/userSlice";
-import {Navigate, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
-export const Login = () => {
+export const SignUp = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const handleLogin = (email: string, password: string) => {
+    const handleRegester = (email: string, password: string) => {
         const auth = getAuth();
-        signInWithEmailAndPassword(auth, email, password)
+        createUserWithEmailAndPassword(auth, email, password)
             .then(({user}) => {
+                console.log(user)
                 dispatch(setUser({
                     email: user.email,
                     token: user.refreshToken,
@@ -23,6 +24,6 @@ export const Login = () => {
             })
     }
     return (
-        <Form title={"login"} handleClick={handleLogin}/>
+        <Form title={"register"} handleClick={handleRegester}/>
     )
 }
