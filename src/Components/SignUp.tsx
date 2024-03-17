@@ -1,11 +1,11 @@
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import {useDispatch} from "react-redux";
 import {Form} from "./Form";
 import {setUser} from "../store/userSlice";
 import {useNavigate} from "react-router-dom";
+import {useAppDispatch} from "../hooks/reduxHooks";
 
 export const SignUp = () => {
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     const navigate = useNavigate()
     const handleRegester = (email: string, password: string) => {
         const auth = getAuth();

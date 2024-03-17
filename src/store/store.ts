@@ -1,6 +1,5 @@
 import {configureStore} from "@reduxjs/toolkit";
 import {userReducers} from "./userSlice";
-import {TypedUseSelectorHook, useSelector} from "react-redux";
 
 export const store = configureStore({
     reducer: {
@@ -8,6 +7,5 @@ export const store = configureStore({
     }
 })
 
+export type AppDispatch = typeof store.dispatch
 export type AppRootStateType = ReturnType<typeof store.getState>
-
-export const useAppSelector: TypedUseSelectorHook<AppRootStateType> = useSelector

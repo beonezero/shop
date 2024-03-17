@@ -5,17 +5,14 @@ import {HomePage} from "./pages/HomePage";
 import {Page404} from "./Components/Page404";
 import {LoginPage} from "./pages/LoginPage";
 import {RegisterPage} from "./pages/RegisterPage";
-import {useAuth} from "./hooks/useAuth";
+import {CountriesPage} from "./pages/CountriesPage";
 
 function App() {
-    const isLoggedIn = useAuth().isAuth
-    if (!isLoggedIn){
-        return <Navigate to={"login"}/>
-    }
     return (
         <div className="App">
             <Routes>
                 <Route path={"/"} element={<HomePage/>}/>
+                <Route path={"/countries"} element={<CountriesPage/>}/>
                 <Route path={"/login"} element={<LoginPage/>}/>
                 <Route path={"/register"} element={<RegisterPage/>}/>
                 <Route path={"/404"} element={<Page404/>}/>
